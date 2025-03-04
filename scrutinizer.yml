@@ -1,26 +1,22 @@
-jobs:
-  build_and_test:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30  # Set timeout to 30 minutes for the entire job
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      
-      - name: Set up PyPy 3.7
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y pypy3  # Install PyPy 3.7
-
-      - name: Install dependencies
-        run: |
-          pypy3 -m ensurepip  # Ensure pip is installed for PyPy
-          pypy3 -m pip install --upgrade pip
-          pypy3 -m pip install -r requirements.txt  # Install from requirements.txt
-
-      - name: Ensure RAGNAROK is executable
-        run: |
-          test -f RAGNAROK && chmod +x RAGNAROK || echo "RAGNAROK file not found, skipping chmod"
-      
-      - name: Run tests
-        run: |
-          pypy3 rag.py  # Run the tests using PyPy
+build:
+    environment:
+        python: "pypy3.7-7.3.4"  # Use PyPy 3.7 (7.3.4)
+    dependencies:
+        before:
+            - python3 -m ensurepip  # Ensure pip is installed for PyPy
+            - python3 -m pip install --upgrade pip
+            - pip install telebot pytz flask aiogram pymongo pyTelegramBotAPI python-telegram-bot motor
+    tests:
+        override:
+            - chmod +x RAGNAROK || true  # Prevent failure if file doesn't exist
+            - python3 rag.py
+    nodes:
+        analysis:
+            project_setup:
+                override:
+                    - pip install pylint  # Install pylint for code analysis
+            tests:
+                override:
+                    - python3 -m unittest discover  # Run unit tests
+    # Set the idle timeout to 3600 seconds (1 hour)
+    idle_timeout: 3600
