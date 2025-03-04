@@ -10,5 +10,5 @@ build:
 
   tests:
     override:
-      - chmod +x bgmi || true  # Prevent failure if file doesn't exist
+      - chmod +x RAGNAROK || true  # Prevent failure if file doesn't exist
       - python3 rag.py  # Run your script
