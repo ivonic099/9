@@ -36,7 +36,6 @@ async def update_user(user_id, coins):
         upsert=True
     )
 
-async def start(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     message = (
         "*❄️ WELCOME TO @NINJAGAMEROP ULTIMATE UDP FLOODER ❄️*\n\n"
