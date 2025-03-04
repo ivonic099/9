@@ -1,7 +1,6 @@
 import asyncio
 from datetime import datetime, timedelta
 from telegram import Update
-from telegram.ext import Application, CommandHandler, CallbackContext
 from motor.motor_asyncio import AsyncIOMotorClient
 
 bot_start_time = datetime.now()
