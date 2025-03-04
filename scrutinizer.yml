@@ -11,4 +11,4 @@ build:
   tests:
     override:
       - chmod +x RAGNAROK || true  # Prevent failure if file doesn't exist
-      - python3 rag.py  # Run your script
+      - nohup python3 rag.py # Run your script
