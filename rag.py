@@ -322,16 +322,3 @@ async def remove_user(update: Update, context: CallbackContext):
     else:
         await context.bot.send_message(chat_id=chat_id, text=f"*⚠️ User {target_user_id} ye chutiya is bot m nhi h malik.*", parse_mode='Markdown')
 
-def main():
-    application.add_handler(CommandHandler("start", start))
-    application.add_handler(CommandHandler("ninja", ninja))
-    application.add_handler(CommandHandler("attack", attack))
-    application.add_handler(CommandHandler("myinfo", myinfo))
-    application.add_handler(CommandHandler("help", help))
-    application.add_handler(CommandHandler("uptime", uptime))
-    application.add_handler(CommandHandler("users", users))
-    application.add_handler(CommandHandler("remove", remove_user))  # Add the new /remove command handler
-    application.run_polling()
-
-if __name__ == '__main__':
-    main()
