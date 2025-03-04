@@ -323,7 +323,6 @@ async def remove_user(update: Update, context: CallbackContext):
         await context.bot.send_message(chat_id=chat_id, text=f"*⚠️ User {target_user_id} ye chutiya is bot m nhi h malik.*", parse_mode='Markdown')
 
 def main():
-    application = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("ninja", ninja))
     application.add_handler(CommandHandler("attack", attack))
